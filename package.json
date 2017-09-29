@@ -21,6 +21,9 @@
     "loading",
     "indicator"
   ],
+  "dependencies": {
+    "jqlite": "^0.2.42"
+  },
   "author": "Filip Iulian Pacurar",
   "license": "MIT",
   "bugs": {
