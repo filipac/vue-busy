@@ -1,0 +1,30 @@
+{
+  "name": "vue-busy",
+  "version": "0.1.0",
+  "description": "Show a loader on custom elements while a request is being made",
+  "main": "busy.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/filipac/vue-busy.git"
+  },
+  "keywords": [
+    "vue",
+    "vue",
+    "busy",
+    "vue",
+    "load",
+    "indicator",
+    "vue",
+    "loading",
+    "indicator"
+  ],
+  "author": "Filip Iulian Pacurar",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/filipac/vue-busy/issues"
+  },
+  "homepage": "https://github.com/filipac/vue-busy#readme"
+}
