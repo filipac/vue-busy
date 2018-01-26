@@ -35,10 +35,11 @@ import { factory as busyFactory } from './busy-factory'
 import j from 'jqlite'
 import b from './busy.css'
 const tracker = busyFactory()
+import { debounce } from 'lodash-es'
 export default {
   bind: function (el, binding, vnode) {
   },
-  update: function (el, binding, vnode) {
+  update: debounce(function(el, binding, vnode) {
     const hideIt = function () {
       j(el).find('.cg-busy-delete').each(function (e, l) {
         j(l).remove()
@@ -59,5 +60,5 @@ export default {
         hideIt()
       })
     }
-  }
+  })
 }

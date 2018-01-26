@@ -22,7 +22,8 @@
     "indicator"
   ],
   "dependencies": {
-    "jqlite": "^0.2.42"
+    "jqlite": "^0.2.42",
+    "lodash-es": "^4.17.4"
   },
   "author": "Filip Iulian Pacurar",
   "license": "MIT",
