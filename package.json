@@ -1,6 +1,6 @@
 {
   "name": "vue-busy",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "Show a loader on custom elements while a request is being made",
   "main": "busy.js",
   "scripts": {
