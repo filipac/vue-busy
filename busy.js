@@ -35,30 +35,34 @@ import { factory as busyFactory } from './busy-factory'
 import j from 'jqlite'
 import b from './busy.css'
 const tracker = busyFactory()
-import { debounce } from 'lodash-es'
+import { debounce } from './debounce'
 export default {
   bind: function (el, binding, vnode) {
   },
-  update: debounce(function(el, binding, vnode) {
-    const hideIt = function () {
-      j(el).find('.cg-busy-delete').each(function (e, l) {
-        j(l).remove()
-      })
-      j(el).css('position', j(el).data('original-position'))
-    }
-    if (!binding.value || !binding.value.promise) return
-    if (tracker.isPromise(binding.value.promise)) {
-      const position = j(el).css('position')
-      if (position !== 'relative') {
-        j(el).data('original-position', position)
-        j(el).css('position', 'relative')
+  update: function(el, binding, vnode) {
+    debounce(()=>{
+      const hideIt = function () {
+        let els = el.querySelectorAll('.cg-busy-delete');
+        for (let i = 0; i < els.length; ++i) {
+          let e = els[i];
+          e.parentNode.removeChild(e)
+        }
+        j(el).css('position', j(el).data('original-position'))
       }
-      j(el).prepend(template(binding.value.text))
-      binding.value.promise.then(function (a) {
-        hideIt()
-      }, function (b) {
-        hideIt()
-      })
-    }
-  })
+      if (!binding.value || !binding.value.promise) return
+      if (tracker.isPromise(binding.value.promise)) {
+        const position = j(el).css('position')
+        if (position !== 'relative') {
+          j(el).data('original-position', position)
+          j(el).css('position', 'relative')
+        }
+        j(el).prepend(template(binding.value.text))
+        binding.value.promise.then(function (a) {
+          hideIt()
+        }, function (b) {
+          hideIt()
+        })
+      }
+    })()
+  }
 }
